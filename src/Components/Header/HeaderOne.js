@@ -30,7 +30,7 @@ export default class HeaderOne extends React.Component {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
                 </svg>)
         }
-a
+
         return (
             <header class="flex flex-col lg:flex-row justify-between shadow-xl lg:px-16 px-4 py-4 ">
                 <div class="flex ">
