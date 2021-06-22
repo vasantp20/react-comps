@@ -8,5 +8,7 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### `Responsive Side Nav Component`
+Web:
 ![Screenshot](images/SideNavWeb.png)
+Mobile:
 ![Screenshot](images/SideNavMobile.png)
