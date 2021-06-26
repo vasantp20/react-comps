@@ -4,16 +4,16 @@ import SideNavItem from "./SideNavItem"
 import sideNavData from "./sideNavData"
 import SideNavBranding from "./SideNavBranding"
 import MobileHeader from "./MobileHeader"
-import {useSpring, animated } from "react-spring";
+import {useSpring, useTransition, animated } from "react-spring";
 
 function SideNav() {
 
     const [navItemData, setNavItemData] = useState(sideNavData)
     const [isNavBarHidden, setisNavBarHidden] = useState(true)
     const config = {
-        mass: 1,
+        mass: 50,
         tension: 170,
-        friction: 26,
+        friction: 20,
         clamp: true,
         precision: 0.01,
         velocity: 0,
@@ -22,11 +22,9 @@ function SideNav() {
       const styleProps = useSpring({
         from: {
           opacity: 0,
-        //   marginLeft: -500
         },
         to: {
           opacity: 1,
-        //   marginLeft: 0
         },
         config
       })
@@ -48,9 +46,22 @@ function SideNav() {
         console.log("State", newState)
     }
 
+    const anotherstyleProps = useSpring({
+        from: {
+          opacity: 0,
+          marginLeft: -500
+        },
+        to: {
+            opacity: 1,
+            marginLeft: 0
+        },
+        config
+      })
+
     function toggleNavBar() {
-        console.log("Called toggleNavBar")
+        
         setisNavBarHidden(!isNavBarHidden)
+        console.log("Called toggleNavBar", isNavBarHidden)
     }
 
     const navItems = navItemData.map((item) => {
@@ -59,7 +70,7 @@ function SideNav() {
     return(
         
         <div class="flex">
-        <animated.div style={styleProps}>
+        <animated.div style={isNavBarHidden ? styleProps : anotherstyleProps}>
         <nav class={isNavBarHidden ? 'hidden lg:block flex-initial top-0 sticky w-56 h-screen shadow-xl p-2' : 'lg:block flex-initial top-0 sticky w-56 h-screen shadow-xl p-2'}>
                     <SideNavBranding />
                     {navItems}
@@ -72,62 +83,6 @@ function SideNav() {
             </div>
             </div>
             )
-}
-class SideNavT extends React.Component {
-    constructor() {
-        super()
-        let currentColor = "rgb(144 118 128)"
-        this.state = {
-            "navItemData": sideNavData,
-            "isNavBarHidden": true
-        }
-        this.handleClick = this.handleClick.bind(this)
-        this.toggleNavBar = this.toggleNavBar.bind(this)
-    }
-
-
-
-    handleClick(id) {
-        let newState = this.state.navItemData.map( (item) => {
-            if(item.id === id) {
-                item.isSelected = true
-            } else {
-                item.isSelected = false
-            }
-        })
-
-        this.setState(newState)
-    }
-    
-    toggleNavBar() {
-        this.setState((prevState) => {
-            return {
-                isNavBarHidden: !prevState.isNavBarHidden
-            }
-        })
-    }
-
-
-    render() {
-        
-        const navItems = this.state.navItemData.map((item) => {
-            return <SideNavItem key={item.id} data={item} clickAction={this.handleClick} />})
-        return (
-            <div class="flex">
-                <nav class={this.state.isNavBarHidden ? 'hidden lg:block flex-initial top-0 sticky w-56 h-screen shadow-xl p-2' : 'lg:block flex-initial top-0 sticky w-56 h-screen shadow-xl p-2'}>
-                    <SideNavBranding />
-                    {navItems}
-                    
-                </nav>
-            <div class="flex-1 lg:px-4">
-                <MobileHeader toggleSideNav={this.toggleNavBar}/>
-                <p class="px-4"> Main Content</p>                
-            </div>
-            </div>
-
-        )
-    }
-
 }
 
 
