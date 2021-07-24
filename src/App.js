@@ -3,7 +3,7 @@ import "./index.css"
 import HeaderOne from "./Components/Header/HeaderOne"
 import SideNav from "./Components/Header/SideNav/SideNav"
 import TextField from "./Components/TextField/TextField"
-
+import FooterExamples from "./Components/Footer/FooterExamples"
 
 import {
     BrowserRouter as Router,
@@ -60,6 +60,11 @@ class App extends React.Component {
                     </div>
                         
                     </Route>
+                    <Route path="/footers">
+                        <FooterExamples></FooterExamples>
+                    </Route>
+
+
                     <Route path="">
                     
                         <a href="/header-one">Header One</a>
@@ -67,7 +72,11 @@ class App extends React.Component {
                         <a href="/side-nav">Side Nav</a>
                         <br/>
                         <a href="/text-field">Text field</a>
+                        <br/>
+                        <a href="/footers">Footers</a>
+
                     </Route>
+                    
                 </Switch>
             </Router>
         )
