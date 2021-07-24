@@ -30,9 +30,12 @@ export default class FooterTwo extends React.Component{
 
                     <div class="flex-auto">
                         <h2>Subscribe to our Newsletter</h2>
-                        <div className="">
-                        <input className="bg-gray-100 focus:outline-none  border-b border-blue-700" type="email"/>
-                </div>
+                        <div className="flex flex-col md:flex-none md:inline ">
+                            <input className="flex-none bg-gray-100 focus:outline-none  border-b border-blue-500" type="email"/>
+                            <button class="md:m-2 focus:outline-none flex-initial my-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Subscribe
+                            </button>
+                        </div>
                     </div>
                     
                     
