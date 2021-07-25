@@ -1,10 +1,10 @@
 import React from "react"
-import "./index.css"
+// import "./index.css"
 import HeaderOne from "./Components/Header/HeaderOne"
 import SideNav from "./Components/Header/SideNav/SideNav"
 import TextField from "./Components/TextField/TextField"
 import FooterExamples from "./Components/Footer/FooterExamples"
-
+import DropDownExamples from "./Components/DropDown/DropDownExample"
 import {
     BrowserRouter as Router,
     Switch,
@@ -64,6 +64,10 @@ class App extends React.Component {
                         <FooterExamples></FooterExamples>
                     </Route>
 
+                    <Route path="/dropdowns">
+                        <DropDownExamples></DropDownExamples>
+                    </Route>
+
 
                     <Route path="">
                     
@@ -74,6 +78,8 @@ class App extends React.Component {
                         <a href="/text-field">Text field</a>
                         <br/>
                         <a href="/footers">Footers</a>
+                        <br/>
+                        <a href="/dropdowns">Dropdowns</a>
 
                     </Route>
                     
