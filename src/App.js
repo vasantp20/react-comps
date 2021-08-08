@@ -38,7 +38,8 @@ class App extends React.Component {
         console.log("Val", this.textFieldValues)
     }
     
-
+    
+      
     render() {
         console.log("text fata", this.state, this.textFieldValues)
         let textFields = this.state.textFieldData.map( (item) => {
